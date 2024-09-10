@@ -5,7 +5,7 @@ Follow these steps to set up and run ScreenSphere locally:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Megane0103/screensphere.git
+   git clone https://github.com/arfadex/screensphere.git
    ```
 
 2. Navigate to the project directory:
