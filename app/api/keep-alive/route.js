@@ -7,9 +7,7 @@ export async function GET() {
   const supabase = createClient(supabaseUrl, supabaseKey);
 
   try {
-    // harmless query — just touches your DB to keep it alive
-    const { error } = await supabase.from("profiles").select("*").limit(1); 
-    // 👆 replace "profiles" with any existing table in your DB
+    const { error } = await supabase.from("favorites").select("id").limit(1);
 
     if (error) throw error;
     return NextResponse.json({ ok: true, msg: "Supabase ping successful ✅" });
