@@ -1,0 +1,19 @@
+import { NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
+
+export async function GET() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  try {
+    // harmless query — just touches your DB to keep it alive
+    const { error } = await supabase.from("profiles").select("*").limit(1); 
+    // 👆 replace "profiles" with any existing table in your DB
+
+    if (error) throw error;
+    return NextResponse.json({ ok: true, msg: "Supabase ping successful ✅" });
+  } catch (err) {
+    return NextResponse.json({ ok: false, error: err.message });
+  }
+}
